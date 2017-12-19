@@ -102,8 +102,11 @@
         jsonpCallback:"success_jsonp",
         success: function(data){
             console.log(data)
-            android=data.data.android
-            ios=data.data.ios
+            if(data.data.code==0){
+                android=data.data.android
+                ios=data.data.ios
+            }
+            
         },
         error:function(){
           console.log("ERROR");
