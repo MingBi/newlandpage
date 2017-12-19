@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>var android='http://down2.youku.com/youku/down.php?pub=c70329437ca70644'; var ios=''</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body,html{
+            position: relative;
+            width:100%;
+            height:100%;
+            overflow: hidden;
+        }
+        .header{
+            position: absolute;
+            top:0;
+            left:0;
+            width:2rem;
+            z-index: 9999;
+        }
+        .box{
+            width:100%;
+            height:100%;
+            overflow: auto;
+            -webkit-overflow-scrolling : touch;
+        }
+        .box_1 {
+            position: relative;
+        }
+        .car_img{
+            width:100%;
+            height:100%;
+            display: block;
+        }
+        .car_down {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            z-index:9000;
+        }
+        .dar_down_img {
+            width:100%;
+            display: block;
+        }
+        .fontsize{
+            width: 100%;
+            font-size: 0.5rem;
+            text-align: center;
+            position: absolute;
+            bottom: 11%;
+            color: white;
+            -webkit-transform: scale(0.6);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="box_1">
+        <img class="header" src="http://static.myushan.com//logo/%E7%BE%BD%E6%89%87LOGO.png" alt=""/>
+        <img class="car_img down" src="http://test.myushan.com//youtu/youtu_04.jpg" alt=""/>
+        <p class="fontsize">
+            北京智投智道投资咨询有限公司版权所有
+        </p>
+    </div>
+</div>
+<div class="car_down">
+    <img class="dar_down_img down" src="http://test.myushan.com//youtu/youtu_04_xiazai.jpg" alt=""/>
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!--<script src="http://cdn.bootcss.com/jquery_lazyload/1.9.6/jquery.lazyload.min.js"></script>-->
+
+<script src="//tech.myushan.com/javascripts/yushan_rs_min.js"></script>
+<script>
+    var url="http://123.56.78.139:9000/landpageManager/getPackage"+window.location.search;
+    $.ajax({
+        type: 'get',
+        url: url,
+        data:"",
+        dataType:'jsonp',
+        jsonp:'callback',
+        jsonpCallback:"success_jsonp",
+        success: function(data){
+            console.log(data)
+            android=data.data.android
+            ios=data.data.ios
+        },
+        error:function(){
+          console.log("ERROR");
+        },
+
+      });
+
+    var u=navigator.userAgent;
+    $('.down').click(function(){
+        if (u.indexOf('iPhone') > -1){
+            window.location.href=ios;
+        }else{
+           window.location.href=android 
+        }
+    })
+
+
+
+    $(function() {
+        new _yushan.dl_info({
+            url :'',
+            dlbutton: ['.down']
+        });
+    })
+</script>
+</body>
+</html>
