@@ -101,10 +101,9 @@
         jsonp:'callback',
         jsonpCallback:"success_jsonp",
         success: function(data){
-            console.log(data)
             if(data.code==0){
-                android=data.data.android
-                ios=data.data.ios
+                android=data.data.android;
+                ios=data.data.ios;
             }
             
         },
@@ -115,7 +114,7 @@
       });
 
     var u=navigator.userAgent;
-    $('.down').click(function(){
+    $('.btn_down').click(function(){
         if (u.indexOf('iPhone') > -1){
             window.location.href=ios;
         }else{
